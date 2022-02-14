@@ -13,7 +13,19 @@ function botondesencriptar (){
   desencriptar(str.value);
 }
 
-//COPIAR PORTAPAPELES
+let copboton = document.getElementById('copiar');
+copboton.onclick = botoncopiar;
+function botoncopiar (){
+  copiartexto();
+}
+
+
+//COPIAR AL PORTAPAPELES
+function copiartexto(){
+    var coptext = document.getElementById('textoresultado');
+    coptext.select();
+    document.execCommand("copy");
+}
 
 
 //ENCRIPTAR
@@ -22,6 +34,9 @@ function encriptar (str){
   let arrenc = [];
   for(var i=0; i<arr.length; i++){
     switch (arr[i]){
+      case 'a':
+        arr[i]='ai';
+        break;
       case 'e':
         arr[i]='enter';
         break;
@@ -43,48 +58,25 @@ function encriptar (str){
 
 
 //DESENCRIPTAR
-function desencriptar (str){
-  let arrdes = str.split('');
-  let arrdesf = [];
-
-  for(var i=0; i<arrdes.length; i++){
-    //enter -> e
-    if(arrdes[i]=='e' && arrdes[i+1]=='n' && arrdes[i+2]=='t' && arrdes[i+3]=='e' && arrdes[i+4]=='r'){
-      arrdesf[i]='e';
-      i=i+5;
-    }
-    else{
-      arrdesf[i]=arrdes[i];
-    }
-
-    //imes -> i
-    if(arrdes[i]=='i' && arrdes[i+1]=='m' && arrdes[i+2]=='e' && arrdes[i+3]=='s'){
-      arrdesf[i]='i';
-      i=i+4;
-    }
-    else{
-      arrdesf[i]=arrdes[i];
-    }
-
-    //ober -> o
-    if(arrdes[i]=='o' && arrdes[i+1]=='b' && arrdes[i+2]=='e' && arrdes[i+3]=='r'){
-      arrdesf[i]='o';
-      i=i+4;
-    }
-    else{
-      arrdesf[i]=arrdes[i];
-    }
-
-    //ufat -> u
-    if(arrdes[i]=='u' && arrdes[i+1]=='f' && arrdes[i+2]=='a' && arrdes[i+3]=='t'){
-      arrdesf[i]='u';
-      i=i+3;
-    }
-    else{
-      arrdesf[i]=arrdes[i];
+function desencriptar(str){
+  arrdes = str.toLowerCase().split('');
+  for(var i = 0; i < arrdes.length; i++){
+    if((arrdes[i]+arrdes[i+1]) == "ai"){
+      arrdes.splice(i, 2, "a");
+    } 
+    else if((arrdes[i]+arrdes[i+1]+arrdes[i+2]+arrdes[i+3]+arrdes[i+4]) == "enter"){
+      arrdes.splice(i, 5, "e");
+    } 
+    else if((arrdes[i]+arrdes[i+1]+arrdes[i+2]+arrdes[i+3]) == "imes"){
+      arrdes.splice(i, 4, "i");
+    } 
+    else if((arrdes[i]+arrdes[i+1]+arrdes[i+2]+arrdes[i+3]) == "ober"){
+      arrdes.splice(i, 4, "o");
+    } 
+    else if((arrdes[i]+arrdes[i+1]+arrdes[i+2]+arrdes[i+3]) == "ufat"){
+      arrdes.splice(i, 4, "u");
     }
   }
-
-  let mensaje = arrdesf.filter(Boolean).join('');
+  let mensaje = arrdes.join('');
   return document.getElementById('textoresultado').value = mensaje;
 }
