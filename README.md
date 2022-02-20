@@ -25,3 +25,7 @@ La página tiene campos para inserción del texto que será encriptado o desencr
 
 #### Extras:
 - Un botón que copia el texto encriptado/desencriptado para la sección de transferencia, o sea que tiene la misma funcionalidad del ctrl+C o de la opción "copiar" del menú de las aplicaciones.
+
+#### Resultado: 
+
+URL: https://encriptador.miguelangel8.repl.co/
