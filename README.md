@@ -14,7 +14,7 @@ La letra "u" es convertida para "ufat"
 #### Requisitos:
 - Funciona solo con letras minúsculas
 - No deben ser utilizadas letras con acentos ni caracteres especiales
-- Encriptar y desencriptar una palabras
+- Encriptar y desencriptar palabras
 
 Por ejemplo:
 
