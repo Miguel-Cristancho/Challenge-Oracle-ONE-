@@ -82,7 +82,7 @@ function encriptar (str){
     alert("Escribe el texto a encriptar/desencriptar en minúsculas, sin acentos y sin caracteres especiales");
   }
 }
-////FUNCIÓN DESENCRIPTAR
+//FUNCIÓN DESENCRIPTAR
 function desencriptar(str){
   arrdes = str.toLowerCase().split('');
   for(let i = 0; i < arrdes.length; i++){
