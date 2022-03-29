@@ -1,32 +1,48 @@
 var textarea = document.getElementById('texto');
 textarea.focus();
-//FUNCIÓN VALIDAR TEXTO
-function validartexto (event){
-  let str = event.which || event.keyCode;
-  console.log("Presionada: " + str);
-  if(str>96 && str<123 || str==241 || str==32){
-    console.log("Presionada: " + String.fromCharCode(str));
-    textarea = document.getElementById('texto');
-    textarea.focus();
-    //BOTONES
-    //Encriptar
-    let encboton = document.getElementById('Encriptar');
-    encboton.onclick = botonencriptar;
-    function botonencriptar (){
-      encriptar(textarea.value);
-    }
-    //Desencriptar
-    let desboton = document.getElementById('Desencriptar');
-    desboton.onclick = botondesencriptar;
-    function botondesencriptar (){
-      desencriptar(textarea.value);
-      alert('Texto desencriptado');
-    }
+//DISPOSITIVO
+if(navigator.appVersion.indexOf("Android") != -1 || navigator.appVersion.indexOf("Ipad") != -1 || navigator.appVersion.indexOf("Iphone") != -1 || navigator.appVersion.indexOf("Ipod") != -1){
+  //BOTONES
+  //Encriptar
+  let encboton = document.getElementById('Encriptar');
+  encboton.onclick = botonencriptar;
+  function botonencriptar (){
+    encriptar(textarea.value);
   }
-  else{
-    alert("Escribe el texto a encriptar/desencriptar en minúsculas, sin acentos y sin caracteres especiales");
+  //Desencriptar
+  let desboton = document.getElementById('Desencriptar');
+  desboton.onclick = botondesencriptar;
+  function botondesencriptar (){
+    desencriptar(textarea.value);
   }
 }
+else{
+  //FUNCIÓN VALIDAR TEXTO
+  function validartexto (event){
+    let str = event.which || event.keyCode;
+    console.log("Presionada: " + str);
+    if(str>96 && str<123 || str==241 || str==32){
+      console.log("Presionada: " + String.fromCharCode(str));
+      //BOTONES
+      //Encriptar
+      let encboton = document.getElementById('Encriptar');
+      encboton.onclick = botonencriptar;
+      function botonencriptar (){
+        encriptar(textarea.value);
+      }
+      //Desencriptar
+      let desboton = document.getElementById('Desencriptar');
+      desboton.onclick = botondesencriptar;
+      function botondesencriptar (){
+        desencriptar(textarea.value);
+      }
+    }
+    else{
+      alert("Escribe el texto a encriptar/desencriptar en minúsculas, sin acentos y sin caracteres especiales");
+    }
+  }
+}
+
 //BOTON COPIAR
 let copboton = document.getElementById('copiar');
 copboton.onclick = botoncopiar;
@@ -84,8 +100,17 @@ function encriptar (str){
 }
 //FUNCIÓN DESENCRIPTAR
 function desencriptar(str){
-  arrdes = str.toLowerCase().split('');
+  let arrdes = str.toLowerCase().split('');
+  let flag = 0;
   for(let i = 0; i < arrdes.length; i++){
+    //Valida texto
+    if(str.charCodeAt(i)>96 && str.charCodeAt(i)<123 || str.charCodeAt(i)==241 || str.charCodeAt(i)==32){
+      flag = flag + 0;
+    }
+    else{
+      flag++;
+    }
+    //Desencripta Texto
     if((arrdes[i]+arrdes[i+1]) == "ai"){
       arrdes.splice(i, 2, "a");
     } 
@@ -102,6 +127,12 @@ function desencriptar(str){
       arrdes.splice(i, 4, "u");
     }
   }
-  let mensaje = arrdes.join('');
-  return document.getElementById('textoresultado').value = mensaje;
+  if(flag === 0){
+    let mensaje = arrdes.join('');
+    alert('Texto Desencriptado'); 
+    return document.getElementById('textoresultado').value = mensaje;
+  }
+  else{
+    alert("Escribe el texto a encriptar/desencriptar en minúsculas, sin acentos y sin caracteres especiales");
+  }
 }
