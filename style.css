@@ -59,6 +59,10 @@ h2{
   text-align: center;
 }
 
+.envolvente form button:hover{
+  box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.3);
+}
+
 .resultado{
   background: #000000;
 }
@@ -110,6 +114,11 @@ h4{
   text-align: center;
   color: #ffffff;
 }
+
+#copiar:hover{
+  box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.3);
+}
+
 /*Cambiar estilos al aumentar el tamaño de pantalla*/
 @media (min-width: 700px){
   .envolvente{
