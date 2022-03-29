@@ -1,7 +1,7 @@
 var textarea = document.getElementById('texto');
 textarea.focus();
 //DISPOSITIVO
-if(navigator.appVersion.indexOf("Android") != -1 || navigator.appVersion.indexOf("Ipad") != -1 || navigator.appVersion.indexOf("Iphone") != -1 || navigator.appVersion.indexOf("Ipod") != -1){
+if(navigator.appVersion.indexOf("Android") != -1 || navigator.appVersion.indexOf("like Mac") != -1){
   //BOTONES
   //Encriptar
   let encboton = document.getElementById('Encriptar');
