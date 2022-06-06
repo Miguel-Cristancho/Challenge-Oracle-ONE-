@@ -1,4 +1,4 @@
-# Challenge-Oracle-ONE-
+# Challenge-Oracle-ONE-Encriptador
 ## Semana 1 y 2: Construye un encriptador de texto
 
 Las "llaves" de encriptación son las siguientes:
